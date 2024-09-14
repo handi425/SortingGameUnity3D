@@ -1,7 +1,3 @@
-Tentu! Berikut adalah dokumentasi rinci dan detail untuk proyek game **"Sorting Balls in Bottles"** yang dapat Anda bagikan di GitHub. Dokumentasi ini mencakup penjelasan lengkap tentang mekanisme game, struktur proyek, penjelasan kode, dan cara menyesuaikan game sesuai kebutuhan Anda.
-
----
-
 # **Sorting Balls in Bottles**
 
 Game puzzle berbasis Unity di mana pemain harus menyortir bola berwarna ke dalam botol, mengikuti aturan tertentu, untuk menyelesaikan teka-teki di berbagai level dengan tingkat kesulitan yang meningkat.
@@ -701,15 +697,3 @@ public class Bottle : MonoBehaviour
     }
 }
 ```
-
----
-
-Dengan menyertakan komentar dan penjelasan rinci dalam kode Anda, Anda memudahkan orang lain (dan diri Anda sendiri di masa depan) untuk memahami cara kerja game dan bagaimana memodifikasinya.
-
----
-
-**Catatan:** Saat membagikan proyek Anda di GitHub, ingat untuk mengecualikan aset apa pun yang bersifat hak milik atau yang tidak Anda miliki hak distribusinya. Gunakan placeholder atau aset gratis dengan lisensi yang sesuai.
-
----
-
-Dokumentasi ini diharapkan dapat memberikan gambaran lengkap tentang proyek Anda dan membantu orang lain untuk memahami serta berkontribusi. Jika Anda memiliki pertanyaan lebih lanjut atau membutuhkan bantuan tambahan, jangan ragu untuk bertanya.
