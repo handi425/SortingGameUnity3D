@@ -1,82 +1,79 @@
-# **Sorting Balls in Bottles**
+# Sorting Balls in Bottles
 
-Game puzzle berbasis Unity di mana pemain harus menyortir bola berwarna ke dalam botol, mengikuti aturan tertentu, untuk menyelesaikan teka-teki di berbagai level dengan tingkat kesulitan yang meningkat.
+Game puzzle built with **Unity** where players must sort colored balls into bottles, following certain rules, to solve puzzles at various levels with increasing difficulty.
 
-## **Daftar Isi**
+![Game Screenshot](Assets/Screenshots/gameplay.png)
 
-- [Pendahuluan](#pendahuluan)
-- [Mekanisme Permainan](#mekanisme-permainan)
-- [Fitur](#fitur)
-- [Memulai](#memulai)
-  - [Prasyarat](#prasyarat)
-  - [Instalasi](#instalasi)
-- [Struktur Proyek](#struktur-proyek)
-- [Penjelasan Skrip](#penjelasan-skrip)
+## Table of Contents
+
+- [Features](#features)
+- [Game Mechanics](#game-mechanics)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Project Structure](#project-structure)
+- [Script Explanation](#script-explanation)
   - [GameManager.cs](#gamemanagercs)
   - [Bottle.cs](#bottlecs)
-- [Penyesuaian](#penyesuaian)
-  - [Mengatur Level](#mengatur-level)
-  - [Mengubah Spasi Antar Bola](#mengubah-spasi-antar-bola)
-- [Masalah yang Diketahui](#masalah-yang-diketahui)
-- [Kontribusi](#kontribusi)
-- [Lisensi](#lisensi)
+- [Customization](#customization)
+  - [Setting Up Levels](#setting-up-levels)
+  - [Adjusting Ball Spacing](#adjusting-ball-spacing)
+- [Known Issues](#known-issues)
+- [Contribution](#contribution)
+- [License](#license)
 
 ---
 
-## **Pendahuluan**
+## Features
 
-"Sorting Balls in Bottles" adalah game puzzle yang dikembangkan menggunakan Unity. Tujuan utama dari game ini adalah menyortir bola-bola berwarna ke dalam botol sehingga setiap botol hanya berisi bola dengan warna yang sama. Seiring dengan kemajuan pemain, level akan menjadi lebih menantang dengan menambahkan lebih banyak warna dan botol.
+- **Multiple Levels**: The game includes several levels with increasing difficulty.
+- **Dynamic Scaling**: Bottle and ball sizes adjust based on the number of rows to ensure proportional display.
+- **Responsive Design**: The game display adapts to various screen sizes and resolutions.
+- **UI Elements**: Displays the current level, win message, and "Next Level" button.
+- **Adjustable Spacing**: The spacing between balls in a bottle can be customized.
 
-## **Mekanisme Permainan**
+## Game Mechanics
 
-- **Botol**: Wadah yang dapat menampung hingga 4 bola.
-- **Bola**: Objek dengan berbagai warna yang perlu disortir oleh pemain.
-- **Interaksi Pemain**: Pemain dapat mengklik botol untuk memilih dan memindahkan bola paling atas ke botol lain, mengikuti aturan tertentu.
+- **Bottles**: Containers that can hold up to 4 balls.
+- **Balls**: Objects with various colors that players need to sort.
+- **Player Interaction**: Players can click bottles to select and move the topmost ball to another bottle, following certain rules.
 
-**Aturan:**
+**Rules:**
 
-1. Hanya bola paling atas dari botol yang dapat dipindahkan.
-2. Bola hanya dapat ditempatkan di atas bola dengan warna yang sama atau ke dalam botol kosong.
-3. Setiap botol hanya dapat menampung maksimal 4 bola.
+1. Only the topmost ball from a bottle can be moved.
+2. Balls can only be placed on top of a ball with the same color or into an empty bottle.
+3. Each bottle can hold a maximum of 4 balls.
 
-## **Fitur**
+## Getting Started
 
-- **Level Bertingkat**: Game memiliki beberapa level dengan tingkat kesulitan yang meningkat.
-- **Skala Dinamis**: Ukuran botol dan bola akan menyesuaikan berdasarkan jumlah baris untuk memastikan tampilan yang proporsional.
-- **Desain Responsif**: Tampilan game menyesuaikan dengan berbagai ukuran dan resolusi layar.
-- **Elemen UI**: Menampilkan level saat ini, pesan kemenangan, dan tombol "Next Level".
-- **Penyesuaian Spasi**: Spasi antar bola dalam botol dapat disesuaikan.
+### Prerequisites
 
-## **Memulai**
+- **Unity Editor** (recommended version 2022.3.37f1.4 or newer)
+- Basic knowledge of **C#** and the **Unity** interface
 
-### **Prasyarat**
+### Installation
 
-- **Unity Editor** (disarankan versi 2019.4 atau lebih baru)
-- Pengetahuan dasar tentang **C#** dan antarmuka **Unity**
-
-### **Instalasi**
-
-1. **Clone Repository:**
+1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/username/SortingBallsInBottles.git
+   git clone https://github.com/handi425/SortingGameUnity3D.git
    ```
 
-2. **Buka Proyek di Unity:**
+2. **Open the Project in Unity:**
 
-   - Buka **Unity Hub**.
-   - Klik **Add** dan pilih direktori proyek yang telah di-clone.
-   - Buka proyek tersebut.
+   - Open **Unity Hub**.
+   - Click **Add** and select the cloned project directory.
+   - Open the project.
 
-3. **Siapkan Scene:**
+3. **Set Up the Scene:**
 
-   - Buka scene utama (misalnya, `MainScene.unity`) dari folder `Assets/Scenes`.
+   - Open the main scene (e.g., `MainScene.unity`) from the `Assets/Scenes` folder.
 
-4. **Jalankan Game:**
+4. **Run the Game:**
 
-   - Klik tombol **Play** di Unity Editor untuk memulai game.
+   - Click the **Play** button in the Unity Editor to start the game.
 
-## **Struktur Proyek**
+## Project Structure
 
 ```
 Assets/
@@ -87,8 +84,8 @@ Assets/
 │   ├── Bottle.prefab
 │   └── Ball.prefab
 ├── Sprites/
-│   ├── BottleSprite.png
-│   └── BallSprite.png
+│   ├── Bottle.png
+│   └── Ball.png
 ├── Scenes/
 │   └── MainScene.unity
 └── UI/
@@ -97,192 +94,68 @@ Assets/
     │   ├── WinMessage
     │   └── PlayAgainButton
     └── Fonts/
-        └── (Font kustom opsional)
+        └── (Optional custom fonts)
 ```
 
-## **Penjelasan Skrip**
+## Script Explanation
 
-### **GameManager.cs**
+### GameManager.cs
 
-Kelas `GameManager` mengelola logika utama game, termasuk pembuatan level, input pemain, dan kondisi kemenangan.
+The `GameManager` class manages the game's main logic, including level creation, player input, and win conditions.
 
-#### **Metode Utama:**
+#### Key Methods:
 
-- `Start()`: Inisialisasi game dengan membuat level pertama dan mengatur elemen UI.
-- `CreateLevel()`: Menghasilkan botol dan bola berdasarkan level saat ini, mengatur posisi mereka dalam grid, dan menyesuaikan skala berdasarkan jumlah baris.
-- `OnBottleClicked(Bottle bottle)`: Mengelola pemilihan botol dan pemindahan bola antar botol.
-- `MoveBall(Bottle fromBottle, Bottle toBottle)`: Memvalidasi dan mengeksekusi pemindahan bola dari satu botol ke botol lain.
-- `CheckWinCondition()`: Memeriksa apakah pemain telah berhasil menyortir semua bola dan menangani skenario kemenangan.
-- `NextLevel()`: Melanjutkan game ke level berikutnya dengan meregenerasi elemen game.
-- `AdjustCamera(int totalRows, float ySpacing)`: Menyesuaikan ukuran kamera untuk memastikan semua botol terlihat di layar.
+- `Start()`: Initializes the game by creating the first level and setting up UI elements.
+- `CreateLevel()`: Generates bottles and balls based on the current level, positions them in a grid, and adjusts their scale based on the number of rows.
+- `OnBottleClicked(Bottle bottle)`: Handles bottle selection and ball movement between bottles.
+- `MoveBall(Bottle fromBottle, Bottle toBottle)`: Validates and executes the movement of a ball from one bottle to another.
+- `CheckWinCondition()`: Checks if the player has successfully sorted all balls and handles the win scenario.
+- `NextLevel()`: Proceeds to the next level by regenerating game elements.
+- `AdjustCamera(int totalRows)`: Adjusts the camera size to ensure all bottles are visible on the screen.
 
-#### **Variabel Penting:**
+#### Important Variables:
 
-- `public GameObject bottlePrefab;`: Referensi ke prefab botol.
-- `public GameObject ballPrefab;`: Referensi ke prefab bola.
-- `public List<Color> ballColors;`: Daftar warna yang digunakan untuk bola.
-- `public Button playAgainButton;`: Referensi ke tombol UI untuk memulai ulang atau melanjutkan level.
-- `public Text levelText;`: Menampilkan level saat ini.
-- `public Text winMessage;`: Menampilkan pesan kemenangan setelah level selesai.
-- `private List<Bottle> bottles;`: List instance botol dalam level saat ini.
-- `private Bottle selectedBottle;`: Botol yang saat ini dipilih oleh pemain.
+- `public GameObject bottlePrefab;`: Reference to the bottle prefab.
+- `public GameObject ballPrefab;`: Reference to the ball prefab.
+- `public List<Color> ballColors;`: List of colors used for the balls.
+- `public Button playAgainButton;`: Reference to the UI button for restarting or proceeding to the next level.
+- `public TextMeshProUGUI levelText;`: Displays the current level.
+- `public TextMeshProUGUI winMessage;`: Displays the win message after a level is completed.
+- `private List<Bottle> bottles;`: List of bottle instances in the current level.
+- `private Bottle selectedBottle;`: The bottle currently selected by the player.
 
-#### **Poin Penyesuaian:**
-
-- **Konfigurasi Level**: Modifikasi array `levelColors` untuk menyesuaikan jumlah warna (dan dengan demikian, bola dan botol) per level.
-- **Skala Botol**: Sesuaikan metode `GetBottleScaleFactor(int totalRows)` untuk mengubah cara botol diskalakan berdasarkan jumlah baris.
-- **Spasi Bola**: Modifikasi variabel `ballSpacing` (jika diimplementasikan) untuk mengatur spasi vertikal antara bola.
-
-### **Bottle.cs**
-
-Kelas `Bottle` mewakili setiap botol dalam game dan mengelola bola yang dikandungnya.
-
-#### **Metode Utama:**
-
-- `OnMouseDown()`: Mendeteksi ketika botol diklik dan memberi tahu `GameManager`.
-- `AddBall(GameObject ball)`: Menambahkan bola ke botol dan menjadikannya sebagai objek anak.
-- `RemoveBall()`: Menghapus bola paling atas dari botol dan mengembalikannya.
-- `PeekBall()`: Mengembalikan bola paling atas tanpa menghapusnya.
-- `BallCount()`: Mengembalikan jumlah bola yang saat ini ada dalam botol.
-- `UpdateBallScaleAndPosition(float bottleScaleFactor)`: Memperbarui skala dan posisi bola di dalam botol berdasarkan faktor skala.
-
-#### **Variabel Penting:**
-
-- `public List<GameObject> balls;`: List instance bola yang dikandung dalam botol.
-- `public float spacingFactor;`: Menentukan spasi vertikal antara bola dalam botol (default adalah `0.25f`).
-
-#### **Poin Penyesuaian:**
-
-- **Spasi Bola**: Sesuaikan variabel `spacingFactor` untuk mengontrol spasi antara bola di dalam botol.
-
-## **Penyesuaian**
-
-### **Mengatur Level**
-
-Untuk memodifikasi level:
-
-1. **Mengubah Jumlah Warna:**
-
-   - Di `GameManager.cs`, modifikasi array `levelColors`:
-
-     ```csharp
-     private int[] levelColors = { 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-     ```
-
-   - Setiap elemen mewakili jumlah warna untuk level tersebut. Sesuaikan angka-angka ini untuk mengubah tingkat kesulitan.
-
-2. **Menambahkan Level Baru:**
-
-   - Tingkatkan variabel `maxLevel` dan tambahkan entri yang sesuai dalam array `levelColors`.
-
-### **Mengubah Spasi Antar Bola**
-
-Untuk mengatur spasi antara bola di dalam botol:
-
-1. **Modifikasi `spacingFactor` di `Bottle.cs`:**
-
-   - Buka `Bottle.cs` dan temukan metode `UpdateBallScaleAndPosition()`.
-   - Ubah nilai `spacingFactor`:
-
-     ```csharp
-     public float spacingFactor = 0.25f; // Nilai default
-     ```
-
-   - Tingkatkan nilai ini untuk menambah spasi, kurangi untuk mengurangi spasi.
-
-2. **Sesuaikan per Botol (Opsional):**
-
-   - Karena `spacingFactor` adalah variabel publik, Anda dapat menyesuaikannya secara individual untuk setiap botol di Unity Editor jika diperlukan.
-
-## **Masalah yang Diketahui**
-
-- **Bola Bertumpuk atau Melebihi Botol**: Jika `spacingFactor` diatur terlalu tinggi, bola mungkin melebihi batas botol.
-  - **Solusi**: Pastikan bahwa total tinggi bola dan spasi tidak melebihi tinggi botol. Sesuaikan `spacingFactor` atau faktor skala botol.
-- **Elemen UI Bertumpang Tindih dengan Botol**: Pada layar yang lebih kecil, elemen UI mungkin bertumpang tindih dengan objek game.
-  - **Solusi**: Sesuaikan metode `AdjustCamera()` dan pengaturan anchor UI untuk memastikan spasi yang tepat.
-
-## **Kontribusi**
-
-Kontribusi sangat dihargai! Silakan fork repository ini dan kirim pull request untuk perbaikan atau peningkatan.
-
-1. **Fork Repository**
-2. **Buat Branch Fitur**
-
-   ```bash
-   git checkout -b fitur/FiturAnda
-   ```
-
-3. **Commit Perubahan Anda**
-
-   ```bash
-   git commit -m "Menambahkan fitur Anda"
-   ```
-
-4. **Push ke Branch**
-
-   ```bash
-   git push origin fitur/FiturAnda
-   ```
-
-5. **Buka Pull Request**
-
-## **Lisensi**
-
-Proyek ini dilisensikan di bawah Lisensi MIT - lihat file [LICENSE](LICENSE) untuk detailnya.
-
----
-
-**Catatan:** Pastikan Anda memiliki hak dan izin yang diperlukan untuk menggunakan dan mendistribusikan aset apa pun (sprite, font, dll.) yang disertakan dalam proyek ini.
-
----
-
-## **Komentar Kode dan Dokumentasi**
-
-Baik `GameManager.cs` dan `Bottle.cs` telah diberi komentar secara rinci untuk menjelaskan fungsionalitas setiap metode dan variabel. Berikut adalah skrip dengan komentar lengkap.
-
----
-
-### **GameManager.cs**
+#### Full Code of GameManager.cs:
 
 ```csharp
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using TMPro;
 
-/// <summary>
-/// Mengelola logika utama game, termasuk pembuatan level,
-/// input pemain, dan kondisi kemenangan.
-/// </summary>
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance; // Instance singleton
+    public static GameManager Instance;
 
-    [Header("Prefabs")]
-    public GameObject bottlePrefab; // Prefab botol
-    public GameObject ballPrefab;   // Prefab bola
+    public GameObject bottlePrefab;
+    public GameObject ballPrefab;
+    public List<Color> ballColors;
 
-    [Header("Colors")]
-    public List<Color> ballColors; // Daftar warna untuk bola
+    public Button playAgainButton;
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI winMessage;
 
-    [Header("UI Elements")]
-    public Button playAgainButton; // Tombol untuk memulai ulang atau melanjutkan level
-    public Text levelText;         // Teks untuk menampilkan level saat ini
-    public Text winMessage;        // Teks untuk menampilkan pesan kemenangan
+    public int currentLevel = 1;
+    public int maxLevel = 10;
 
-    [Header("Game Settings")]
-    public int currentLevel = 1; // Nomor level saat ini
-    public int maxLevel = 10;    // Jumlah level maksimum
-
-    // Array yang menentukan jumlah warna per level
+    // Level options (number of colors)
     private int[] levelColors = { 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-    // List instance botol dalam level saat ini
     private List<Bottle> bottles = new List<Bottle>();
-    private Bottle selectedBottle = null; // Botol yang dipilih saat ini
+    private Bottle selectedBottle = null;
 
     private void Awake()
     {
-        // Implementasi singleton
         if (Instance == null)
             Instance = this;
         else
@@ -291,23 +164,17 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // Inisialisasi elemen UI
+        // Disable the play again button and win message at the start
         playAgainButton.gameObject.SetActive(false);
         winMessage.gameObject.SetActive(false);
 
-        // Membuat level awal
         CreateLevel();
     }
 
-    /// <summary>
-    /// Mengelola logika ketika botol diklik oleh pemain.
-    /// </summary>
-    /// <param name="bottle">Botol yang diklik.</param>
     public void OnBottleClicked(Bottle bottle)
     {
         if (selectedBottle == null)
         {
-            // Pilih botol jika memiliki bola
             if (bottle.BallCount() == 0)
                 return;
 
@@ -318,13 +185,11 @@ public class GameManager : MonoBehaviour
         {
             if (bottle == selectedBottle)
             {
-                // Batalkan pemilihan jika botol yang sama diklik lagi
                 HighlightBottle(bottle, false);
                 selectedBottle = null;
             }
             else
             {
-                // Coba pindahkan bola ke botol baru
                 MoveBall(selectedBottle, bottle);
                 HighlightBottle(selectedBottle, false);
                 selectedBottle = null;
@@ -332,14 +197,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Memindahkan bola dari satu botol ke botol lain jika gerakan valid.
-    /// </summary>
-    /// <param name="fromBottle">Botol asal.</param>
-    /// <param name="toBottle">Botol tujuan.</param>
     private void MoveBall(Bottle fromBottle, Bottle toBottle)
     {
-        // Periksa apakah botol tujuan penuh
         if (toBottle.BallCount() >= 4)
             return;
 
@@ -349,7 +208,6 @@ public class GameManager : MonoBehaviour
         if (ballToMove == null)
             return;
 
-        // Periksa apakah gerakan valid (warna cocok atau botol kosong)
         if (targetBall == null || ballToMove.GetComponent<SpriteRenderer>().color == targetBall.GetComponent<SpriteRenderer>().color)
         {
             fromBottle.RemoveBall();
@@ -358,11 +216,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Menyorot botol ketika dipilih.
-    /// </summary>
-    /// <param name="bottle">Botol yang akan disorot.</param>
-    /// <param name="highlight">Apakah botol disorot atau tidak.</param>
     private void HighlightBottle(Bottle bottle, bool highlight)
     {
         SpriteRenderer renderer = bottle.GetComponent<SpriteRenderer>();
@@ -372,74 +225,91 @@ public class GameManager : MonoBehaviour
             renderer.color = Color.white;
     }
 
-    /// <summary>
-    /// Membuat level baru berdasarkan pengaturan level saat ini.
-    /// </summary>
+    // Grid Parameters
+    int columnsPerRow = 5; // Adjust as needed
+    float xSpacing = 2f;
+    float ySpacing = 3f;
+
     private void CreateLevel()
     {
-        // Hapus botol dan bola sebelumnya
+        // Remove previous bottles and balls if any
         foreach (Bottle bottle in bottles)
         {
+            // Remove all balls in the bottle
             foreach (GameObject ball in bottle.balls)
             {
                 Destroy(ball);
             }
             bottle.balls.Clear();
+
+            // Remove the bottle
             Destroy(bottle.gameObject);
         }
         bottles.Clear();
 
-        // Tentukan jumlah warna dan botol untuk level ini
+        // Determine the number of colors based on the current level
         int colorCount = levelColors[currentLevel - 1];
-        int bottleCount = colorCount + 2; // Tambahan botol kosong untuk gameplay
 
-        // Parameter grid
-        int columnsPerRow = 5; // Sesuaikan sesuai kebutuhan
+        // The number of bottles is the number of colors + 2 empty bottles
+        int bottleCount = colorCount + 2; // Each color has 4 balls, and bottle capacity is 4
+
+        int columnsPerRow = 5; // Adjust as needed
         float baseXSpacing = 2f;
         float baseYSpacing = 3f;
 
-        // Hitung total kolom dan baris
+        // Calculate total rows and columns
         int totalColumns = Mathf.Min(columnsPerRow, bottleCount);
-        int totalRows = Mathf.CeilToInt((float)bottleCount / totalColumns);
+        int totalRows = Mathf.CeilToInt((float)bottleCount / columnsPerRow);
 
-        // Dapatkan faktor skala botol berdasarkan total baris
-        float bottleScaleFactor = GetBottleScaleFactor(totalRows);
-
-        // Atur skala botol
+        // Calculate scaling factor based on the number of rows
+        float bottleScaleFactor = 1f;
+        if (totalRows == 1)
+        {
+            bottleScaleFactor = 1f;
+        }
+        else if (totalRows == 2)
+        {
+            bottleScaleFactor = 0.5f;
+        }
+        else
+        {
+            // For more than 2 rows, you can adjust the scaling factor as needed
+            bottleScaleFactor = 1f / totalRows; // Simple example
+        }
+        // Set bottle size
         Vector3 bottleScale = new Vector3(bottleScaleFactor, bottleScaleFactor, 1f);
 
-        // Sesuaikan spasi berdasarkan skala
-        float xSpacing = baseXSpacing * bottleScaleFactor * 2f;
-        float ySpacing = baseYSpacing * bottleScaleFactor * 2f;
+        // Adjust spacing based on the scaling factor
+        float xSpacing = baseXSpacing * bottleScaleFactor * 2; // Multiply by 2 for sufficient spacing
+        float ySpacing = baseYSpacing * bottleScaleFactor * 2;
 
-        // Hitung ukuran grid
+        // Calculate grid size
         float gridWidth = (totalColumns - 1) * xSpacing;
         float gridHeight = (totalRows - 1) * ySpacing;
 
-        // Posisi awal untuk memusatkan grid
-        float startX = -gridWidth / 2f;
-        float startY = gridHeight / 2f - ySpacing / 2f;
+        // Starting position to center the grid
+        float startX = -gridWidth / 2;
+        float startY = gridHeight / 2 - ySpacing / 2;
 
-        // Membuat dan menempatkan botol
+        // Create bottles and place them in the grid
         for (int i = 0; i < bottleCount; i++)
         {
-            int row = i / totalColumns;
-            int column = i % totalColumns;
+            int row = i / columnsPerRow;
+            int column = i % columnsPerRow;
 
             float xPos = startX + column * xSpacing;
             float yPos = startY - row * ySpacing;
 
-            GameObject bottleObj = Instantiate(bottlePrefab, new Vector3(xPos, yPos, 0f), Quaternion.identity);
+            GameObject bottleObj = Instantiate(bottlePrefab, new Vector3(xPos, yPos, 0), Quaternion.identity);
             bottleObj.transform.localScale = bottleScale;
-
             Bottle bottle = bottleObj.GetComponent<Bottle>();
             bottles.Add(bottle);
         }
 
-        // Sesuaikan kamera untuk menyesuaikan grid
-        AdjustCamera(totalRows, ySpacing);
+        // Adjust the camera to fit the grid
+        AdjustCamera(totalRows);
 
-        // Membuat bola dan menetapkan warna
+        // Create balls
         List<GameObject> ballsList = new List<GameObject>();
         for (int i = 0; i < colorCount; i++)
         {
@@ -448,22 +318,22 @@ public class GameManager : MonoBehaviour
             {
                 GameObject ballObj = Instantiate(ballPrefab);
                 ballObj.GetComponent<SpriteRenderer>().color = color;
-                ballObj.transform.localScale = new Vector3(bottleScaleFactor, bottleScaleFactor, 1f);
                 ballsList.Add(ballObj);
             }
         }
 
-        // Mengacak bola untuk keacakan
+        // Shuffle balls
         Shuffle(ballsList);
 
-        // Membagikan bola ke dalam botol
+        // Place balls into bottles
         int ballIndex = 0;
         foreach (Bottle bottle in bottles)
         {
-            // Lewati botol kosong jika semua bola telah dibagikan
+            // Skip empty bottles
             if (ballIndex >= ballsList.Count)
                 break;
 
+            // Collect balls for this bottle
             List<GameObject> bottleBalls = new List<GameObject>();
 
             for (int i = 0; i < 4 && ballIndex < ballsList.Count; i++)
@@ -472,58 +342,33 @@ public class GameManager : MonoBehaviour
                 ballIndex++;
             }
 
+            // Add balls to the bottle from bottom to top
             foreach (GameObject ball in bottleBalls)
             {
                 bottle.AddBall(ball);
             }
-
-            // Perbarui skala dan posisi bola dalam botol
-            bottle.UpdateBallScaleAndPosition(bottleScaleFactor);
         }
 
-        // Perbarui UI
+        // Update level text
         levelText.text = "Level " + currentLevel;
+
+        // Disable win message
         winMessage.gameObject.SetActive(false);
     }
 
-    /// <summary>
-    /// Menentukan faktor skala botol berdasarkan jumlah baris.
-    /// </summary>
-    /// <param name="totalRows">Jumlah total baris dalam grid.</param>
-    /// <returns>Faktor skala untuk botol.</returns>
-    private float GetBottleScaleFactor(int totalRows)
+    private void AdjustCamera(int totalRows)
     {
-        if (totalRows == 1)
-            return 1f;
-        else if (totalRows == 2)
-            return 0.7f;
-        else if (totalRows == 3)
-            return 0.6f;
-        else if (totalRows == 4)
-            return 0.5f;
-        else
-            return 0.4f; // Untuk lebih dari 4 baris
-    }
+        // Grid parameters (should be the same as used in CreateLevel)
+        float ySpacing = 3f;
 
-    /// <summary>
-    /// Menyesuaikan kamera untuk memastikan semua botol terlihat.
-    /// </summary>
-    /// <param name="totalRows">Jumlah total baris dalam grid.</param>
-    /// <param name="ySpacing">Spasi vertikal antara botol.</param>
-    private void AdjustCamera(int totalRows, float ySpacing)
-    {
-        float requiredHeight = totalRows * ySpacing + 4f; // Tambahan ruang untuk UI
-        Camera.main.orthographicSize = Mathf.Max(requiredHeight / 2f, 5f);
+        // Adjust the orthographic size of the camera
+        float requiredHeight = totalRows * ySpacing + 2f; // Additional space for UI
+        Camera.main.orthographicSize = Mathf.Max(requiredHeight / 2f, 5f); // Minimum camera size 5
 
-        // Posisikan kamera di tengah
+        // Ensure the camera is centered
         Camera.main.transform.position = new Vector3(0, 0, -10);
     }
 
-    /// <summary>
-    /// Mengacak list menggunakan algoritma Fisher-Yates.
-    /// </summary>
-    /// <typeparam name="T">Tipe elemen list.</typeparam>
-    /// <param name="list">List yang akan diacak.</param>
     private void Shuffle<T>(List<T> list)
     {
         for (int i = 0; i < list.Count; i++)
@@ -535,9 +380,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Memeriksa apakah kondisi kemenangan terpenuhi dan menangani skenario kemenangan.
-    /// </summary>
     private void CheckWinCondition()
     {
         bool isWin = true;
@@ -552,10 +394,10 @@ public class GameManager : MonoBehaviour
                 break;
             }
 
-            // Dapatkan warna bola pertama
+            // Get the color of the first ball (bottom-most)
             Color firstColor = bottle.balls[0].GetComponent<SpriteRenderer>().color;
 
-            // Periksa apakah semua bola dalam botol memiliki warna yang sama
+            // Check each ball in the bottle
             foreach (GameObject ball in bottle.balls)
             {
                 if (ball.GetComponent<SpriteRenderer>().color != firstColor)
@@ -571,79 +413,86 @@ public class GameManager : MonoBehaviour
 
         if (isWin)
         {
-            // Tampilkan pesan kemenangan dan tombol "Next Level"
+            // Display win message
             winMessage.gameObject.SetActive(true);
-            winMessage.text = "Selamat! Anda menyelesaikan Level " + currentLevel + "!";
+            winMessage.text = "Congratulations! You completed Level " + currentLevel + "!";
+
+            // Enable the Play Again button
             playAgainButton.gameObject.SetActive(true);
-            playAgainButton.GetComponentInChildren<Text>().text = "Next Level";
+
+            // Change button text to "Next Level"
+            playAgainButton.GetComponentInChildren<TextMeshProUGUI>().text = "Next Level";
         }
     }
 
-    /// <summary>
-    /// Melanjutkan ke level berikutnya.
-    /// </summary>
     public void NextLevel()
     {
         if (currentLevel < maxLevel)
+        {
             currentLevel++;
+        }
         else
-            currentLevel = 1; // Kembali ke level 1 jika telah mencapai level maksimum
+        {
+            currentLevel = 1; // Return to level 1 if maximum level is reached
+        }
 
+        // Disable the Play Again button
         playAgainButton.gameObject.SetActive(false);
+
+        // Create a new level
         CreateLevel();
     }
 
-    /// <summary>
-    /// Memulai ulang level saat ini.
-    /// </summary>
     public void RestartLevel()
     {
+        // Disable the Play Again button
         playAgainButton.gameObject.SetActive(false);
+
+        // Recreate the current level
         CreateLevel();
     }
 }
 ```
 
----
+### Bottle.cs
 
-### **Bottle.cs**
+The `Bottle` class represents each bottle in the game and manages the balls it contains.
+
+#### Key Methods:
+
+- `OnMouseDown()`: Detects when the bottle is clicked and notifies the `GameManager`.
+- `AddBall(GameObject ball)`: Adds a ball to the bottle and sets it as a child object.
+- `RemoveBall()`: Removes the topmost ball from the bottle and returns it.
+- `PeekBall()`: Returns the topmost ball without removing it.
+- `BallCount()`: Returns the number of balls currently in the bottle.
+- `UpdateBallPositions()`: Updates the positions of the balls within the bottle to ensure they are stacked correctly.
+
+#### Important Variables:
+
+- `public List<GameObject> balls;`: List of ball instances contained within the bottle.
+
+#### Full Code of Bottle.cs:
 
 ```csharp
 using UnityEngine;
 using System.Collections.Generic;
 
-/// <summary>
-/// Mewakili botol dalam game dan mengelola bola yang dikandungnya.
-/// </summary>
 public class Bottle : MonoBehaviour
 {
-    // List bola yang saat ini ada dalam botol
     public List<GameObject> balls = new List<GameObject>();
-
-    // Faktor untuk menentukan spasi antara bola
-    [HideInInspector]
-    public float spacingFactor = 0.25f;
 
     private void OnMouseDown()
     {
-        // Memberi tahu GameManager ketika botol ini diklik
         GameManager.Instance.OnBottleClicked(this);
     }
 
-    /// <summary>
-    /// Menambahkan bola ke botol.
-    /// </summary>
-    /// <param name="ball">Bola yang akan ditambahkan.</param>
     public void AddBall(GameObject ball)
     {
-        balls.Add(ball);
+        balls.Add(ball); // Add ball to the end of the list
         ball.transform.SetParent(transform);
+        UpdateBallPositions();
     }
 
-    /// <summary>
-    /// Menghapus bola paling atas dari botol.
-    /// </summary>
-    /// <returns>Bola yang dihapus.</returns>
     public GameObject RemoveBall()
     {
         if (balls.Count == 0)
@@ -652,13 +501,10 @@ public class Bottle : MonoBehaviour
         int lastIndex = balls.Count - 1;
         GameObject ball = balls[lastIndex];
         balls.RemoveAt(lastIndex);
+        UpdateBallPositions();
         return ball;
     }
 
-    /// <summary>
-    /// Mengembalikan bola paling atas tanpa menghapusnya.
-    /// </summary>
-    /// <returns>Bola paling atas.</returns>
     public GameObject PeekBall()
     {
         if (balls.Count == 0)
@@ -667,33 +513,125 @@ public class Bottle : MonoBehaviour
         return balls[balls.Count - 1];
     }
 
-    /// <summary>
-    /// Mengembalikan jumlah bola dalam botol.
-    /// </summary>
-    /// <returns>Jumlah bola.</returns>
     public int BallCount()
     {
         return balls.Count;
     }
 
-    /// <summary>
-    /// Memperbarui skala dan posisi bola dalam botol.
-    /// </summary>
-    /// <param name="bottleScaleFactor">Faktor skala botol.</param>
-    public void UpdateBallScaleAndPosition(float bottleScaleFactor)
+    private void UpdateBallPositions()
     {
-        // Sesuaikan faktor spasi jika diperlukan
-        spacingFactor = 0.25f * bottleScaleFactor; // Modifikasi sesuai kebutuhan
-
         for (int i = 0; i < balls.Count; i++)
         {
-            // Perbarui skala bola
-            balls[i].transform.localScale = new Vector3(bottleScaleFactor, bottleScaleFactor, 1f);
-
-            // Hitung posisi Y bola
-            float yOffset = -0.5f + (i * spacingFactor) + (spacingFactor / 2f);
-            balls[i].transform.localPosition = new Vector3(0, yOffset, 0);
+            float yOffset = 0.5f; // Initial offset from the bottom of the bottle
+            float ballHeight = 1f; // Height of the ball (matches the Y scale of the ball)
+            float yPos = yOffset + i * ballHeight;
+            balls[i].transform.localPosition = new Vector3(0, yPos, 0);
         }
     }
 }
 ```
+
+## Customization
+
+### Setting Up Levels
+
+To modify levels:
+
+1. **Change the Number of Colors:**
+
+   - In `GameManager.cs`, modify the `levelColors` array:
+
+     ```csharp
+     private int[] levelColors = { 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+     ```
+
+   - Each element represents the number of colors for that level. Adjust these numbers to change the difficulty.
+
+2. **Add New Levels:**
+
+   - Increase the `maxLevel` variable and add corresponding entries in the `levelColors` array.
+
+### Adjusting Ball Spacing
+
+To set the spacing between balls within a bottle:
+
+1. **Modify `UpdateBallPositions()` in `Bottle.cs`:**
+
+   - Locate the `UpdateBallPositions()` method in `Bottle.cs`.
+
+   - Adjust the `yOffset` and `ballHeight` values:
+
+     ```csharp
+     private void UpdateBallPositions()
+     {
+         float yOffset = 0.5f; // Adjust this value for initial offset
+         float ballHeight = 1f; // Adjust this value for ball spacing
+
+         for (int i = 0; i < balls.Count; i++)
+         {
+             float yPos = yOffset + i * ballHeight;
+             balls[i].transform.localPosition = new Vector3(0, yPos, 0);
+         }
+     }
+     ```
+
+   - **Increase `ballHeight`** to add more space between balls.
+   - **Decrease `ballHeight`** to reduce the space between balls.
+
+## Known Issues
+
+- **Balls Overlapping or Exceeding the Bottle**: If `ballHeight` is set too high, balls may exceed the bottle's boundaries.
+
+  - **Solution**: Ensure that the total height of the balls and spacing does not exceed the bottle's height. Adjust `ballHeight` or the bottle's scale factor accordingly.
+
+- **UI Elements Overlapping with Bottles**: On smaller screens, UI elements may overlap with game objects.
+
+  - **Solution**: Adjust the `AdjustCamera()` method and UI anchor settings to ensure proper spacing.
+
+## Contribution
+
+Contributions are welcome! Please fork this repository and submit pull requests for improvements or fixes.
+
+1. **Fork the Repository**
+
+2. **Create a Feature Branch**
+
+   ```bash
+   git checkout -b feature/YourFeature
+   ```
+
+3. **Commit Your Changes**
+
+   ```bash
+   git commit -m "Add your feature"
+   ```
+
+4. **Push to the Branch**
+
+   ```bash
+   git push origin feature/YourFeature
+   ```
+
+5. **Open a Pull Request**
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+**Note:** When sharing your project on GitHub, remember to exclude any proprietary assets or assets you do not have the rights to distribute. Use placeholders or free assets with appropriate licenses.
+
+---
+
+**Assets Used:**
+
+- **Sprites:**
+  - `Ball.png`
+  - `Bottle.png`
+
+Make sure to place these assets in the `Assets/Sprites/` directory.
+
+---
+
+If you have any questions or need further assistance, feel free to reach out. Happy coding!
