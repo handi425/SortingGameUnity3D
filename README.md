@@ -2,7 +2,7 @@
 
 Game puzzle built with **Unity** where players must sort colored balls into bottles, following certain rules, to solve puzzles at various levels with increasing difficulty.
 
-![Game Screenshot](Assets/Screenshots/gameplay.png)
+![Game Screenshot](main/Screenshot_3.png)
 
 ## Table of Contents
 
